@@ -24,7 +24,7 @@ HardwareSerial gpsSerial(2);
 
 String filename = "";
 float prevTotalAcc = 1.0;
-unsigned long lastBeepTime = 0;  
+unsigned long lastBeepTime = 0;
 
 // ================= CREATE NEW FILE =================
 void createNewFile() {
@@ -104,7 +104,7 @@ void loop() {
   float ay_g = ay / 16384.0;
   float az_g = az / 16384.0;
 
-  float totalAcc = sqrt(ax_g*ax_g + ay_g*ay_g + az_g*az_g);
+  float totalAcc = sqrt(ax_g * ax_g + ay_g * ay_g + az_g * az_g);
   float motionChange = abs(totalAcc - prevTotalAcc);
   bool stationary = motionChange < 0.02;
   prevTotalAcc = totalAcc;
@@ -115,12 +115,11 @@ void loop() {
 
     if (millis() - lastBeepTime >= 2000) {
       digitalWrite(BUZZER_PIN, HIGH);
-      delay(100);                  // 100ms beep
+      delay(100);
       digitalWrite(BUZZER_PIN, LOW);
       lastBeepTime = millis();
     }
-  }
-  else {
+  } else {
     digitalWrite(LED_PIN, LOW);
     digitalWrite(BUZZER_PIN, LOW);
   }
@@ -148,8 +147,8 @@ void loop() {
     file.print(temp); file.print(",");
     file.print(pressure); file.print(",");
     file.print(altitude); file.print(",");
-    file.print(lat,6); file.print(",");
-    file.print(lon,6); file.print(",");
+    file.print(lat, 6); file.print(",");
+    file.print(lon, 6); file.print(",");
     file.print(gpsAlt); file.print(",");
     file.println(sats);
     file.close();
@@ -157,7 +156,7 @@ void loop() {
   }
 
   // ===== LoRa =====
-  String packet = "A1," + String(temp) + "," + String(lat,6) + "," + String(lon,6);
+  String packet = "A1," + String(temp) + "," + String(lat, 6) + "," + String(lon, 6);
 
   LoRa.beginPacket();
   LoRa.print(packet);
@@ -166,12 +165,19 @@ void loop() {
   // ===== SERIAL DEBUG =====
   Serial.println("------ LOOP DATA ------");
 
+  Serial.print("AX: "); Serial.print(ax_g);
+  Serial.print(" AY: "); Serial.print(ay_g);
+  Serial.print(" AZ: "); Serial.println(az_g);
+
+  Serial.print("TotalAcc: ");
+  Serial.println(totalAcc);
+
   Serial.print("Temp: "); Serial.print(temp);
   Serial.print("  Alt: "); Serial.println(altitude);
 
   Serial.print("GPS Valid: "); Serial.println(gpsValid);
-  Serial.print("LAT: "); Serial.print(lat,6);
-  Serial.print(" LON: "); Serial.println(lon,6);
+  Serial.print("LAT: "); Serial.print(lat, 6);
+  Serial.print(" LON: "); Serial.println(lon, 6);
   Serial.print("SATS: "); Serial.println(sats);
 
   Serial.print("Motion: ");
