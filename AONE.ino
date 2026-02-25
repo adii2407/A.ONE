@@ -24,7 +24,7 @@ HardwareSerial gpsSerial(2);
 
 String filename = "";
 float prevTotalAcc = 1.0;
-unsigned long lastBeepTime = 0;   // 🔥 important
+unsigned long lastBeepTime = 0;  
 
 // ================= CREATE NEW FILE =================
 void createNewFile() {
