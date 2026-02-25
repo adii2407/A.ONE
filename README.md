@@ -32,9 +32,15 @@ A.ONE collects atmospheric data, transmits data via LoRa, and stores it in flash
 6. Recovery alert activates 
 7. Data can be retrieved for analysis
 
+## Project Status
+This project is under active development. Future enhancements include:
+- Balloon deployment for high-altitude data collection
+- Parachute-based recovery system
+- Camera integration for aerial imaging
+- Advanced telemetry and data analytics
+
 ## Future Scope
 - Live telemetry via LoRa/cloud
-- Camera integration for aerial imaging
 - Advanced recovery tracking
 - Multi-flight data comparison
 - Machine learning-based analysis
