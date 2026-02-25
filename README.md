@@ -21,15 +21,16 @@ IoT & aerospace learning project for atmospheric data collection with sensors an
 - Power system (Li-ion)
 
 ## Project Goal
-A.ONE collects atmospheric data, transmits data via LoRa (if enabled), and stores it in flash memory for analysis. Recovery system alerts with buzzer and LED when required.
+A.ONE collects atmospheric data, transmits data via LoRa, and stores it in flash memory for analysis. Recovery system alerts with buzzer and LED when required.
 
 ## How It Works
 1. Device powers on
 2. Sensors collect data
 3. Data stored in flash memory
-4. LoRa transmits data 
-5. Recovery alert activates 
-6. Data can be retrieved for analysis
+4. LoRa transmits data
+5. GPS module tracks location 
+6. Recovery alert activates 
+7. Data can be retrieved for analysis
 
 ## Future Scope
 - Live telemetry via LoRa/cloud
